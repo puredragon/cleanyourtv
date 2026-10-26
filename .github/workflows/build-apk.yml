@@ -19,7 +19,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
+      # ubuntu-latest ships the Android SDK (platform 34 + build-tools) preinstalled;
+      # android-actions/setup-android@v3 currently fails installing the obsolete 'tools' package.
 
       - name: Build release APK (debug-signed, per app/build.gradle)
         working-directory: launcher
